@@ -1,0 +1,51 @@
+@model AspnetOkta.Domain.MyUser
+
+<h2>User Profile</h2>
+@if(@Model == null){
+  <p>Sorry no user found</p>
+}else{
+  <ul>
+    <li>
+      <strong>First Name:</strong>
+      @Model.FirstName
+    </li>
+    <li>
+      <strong>Last Name:</strong>
+      @Model.LastName
+    </li>
+    <li>
+      <strong>Favorite Color:</strong>
+      @Model.FavoriteColor
+    </li>
+    <li>
+      <strong>Favorites:</strong>
+      @foreach(var fave in Model.CustomData.Favorites){
+          <ul>
+            <li>
+              <strong>Title</strong>
+              @fave.Title
+            </li>
+            <li>
+              <strong>Type</strong>
+              @fave.EntityType
+            </li>
+          </ul>
+      }
+    </li>
+    <li>
+      <strong>Groups:</strong>
+      @foreach(var group in Model.Groups){
+          <ul>
+            <li>
+              <strong>Name</strong>
+              @group.Name
+            </li>
+            <li>
+              <strong>Descripiotn</strong>
+              @group.Description
+            </li>
+          </ul>
+      }
+    </li>
+  </ul>
+}
